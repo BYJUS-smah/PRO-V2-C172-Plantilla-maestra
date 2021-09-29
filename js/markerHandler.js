@@ -60,15 +60,6 @@ AFRAME.registerComponent("markerhandler", {
     //Get the dish based on ID
     var dish = dishes.filter(dish => dish.id === markerId)[0];
 
-    //Update UI conent VISIBILITY of AR scene(MODEL , INGREDIENTS & PRICE)
-    var model = document.querySelector(`#model-${dish.id}`);
-    model.setAttribute("visible", true);
-
-    var ingredientsContainer = document.querySelector(`#main-plane-${dish.id}`);
-    ingredientsContainer.setAttribute("visible", true);
-
-    var priceplane = document.querySelector(`#price-plane-${dish.id}`);
-    priceplane.setAttribute("visible", true)
 
     //Check if the dish is available 
     if (dish.unavailable_days.includes(days[todaysDay])) {
@@ -85,6 +76,15 @@ AFRAME.registerComponent("markerhandler", {
       model.setAttribute("position", dish.model_geometry.position);
       model.setAttribute("rotation", dish.model_geometry.rotation);
       model.setAttribute("scale", dish.model_geometry.scale);
+
+      //Update UI conent VISIBILITY of AR scene(MODEL , INGREDIENTS & PRICE)
+      model.setAttribute("visible", true);
+
+      var ingredientsContainer = document.querySelector(`#main-plane-${dish.id}`);
+      ingredientsContainer.setAttribute("visible", true);
+
+      var priceplane = document.querySelector(`#price-plane-${dish.id}`);
+      priceplane.setAttribute("visible", true)
 
       //Changing button div visibility
       var buttonDiv = document.getElementById("button-div");
